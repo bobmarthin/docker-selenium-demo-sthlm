@@ -43,4 +43,6 @@ group :development do
   gem 'spring'
 
   gem 'rspec-rails', '~> 3.5'
+
+  gem 'selenium-webdriver'
 end
