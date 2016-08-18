@@ -1,7 +1,6 @@
 body {
-  background-image: image-url("doc-sthlm-2016.jpg");
   background-color: #fff;
-  color: green;
+  color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
@@ -9,21 +8,21 @@ body {
 
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 20px;
+  font-size: 13px;
   line-height: 18px;
 }
 
 pre {
-  background-color: green;
+  background-color: #eee;
   padding: 10px;
   font-size: 11px;
 }
 
 a {
-  color: green;
+  color: #000;
 
   &:visited {
-    color: green;
+    color: #666;
   }
 
   &:hover {
