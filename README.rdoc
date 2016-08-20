@@ -14,3 +14,4 @@ docker-compose up -d && ./init.sh
 docker-compose run web rspec spec/integration/users-firefox.rb
 #vnc to firefox machine
 open vnc://hola@localhost:<vnc-port>
+```
