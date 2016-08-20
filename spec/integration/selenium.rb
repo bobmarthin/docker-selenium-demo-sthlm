@@ -27,5 +27,4 @@ RSpec.describe "Selenium Integartion test" do
           @driver.quit
     end
   end
-
 end
