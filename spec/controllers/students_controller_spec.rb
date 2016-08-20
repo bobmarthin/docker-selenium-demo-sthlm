@@ -36,6 +36,12 @@ RSpec.describe StudentsController, type: :controller do
   # StudentsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
+  describe "test" do
+    it "should return true" do
+
+      expect(true).to eq(true)
+    end
+  end
   describe "GET #index" do
     it "assigns all students as @students" do
       student = Student.create! valid_attributes

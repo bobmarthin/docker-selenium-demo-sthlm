@@ -1,22 +1,31 @@
 require "selenium-webdriver"
+require 'rails_helper'
 
-describe "Google Search" do
 
-  before(:each) do
-    @driver = Selenium::WebDriver.for :firefox
-    @base_url = "https://www.google.com/"
-    @accept_next_alert = true
-    @driver.manage.timeouts.implicit_wait = 30
+
+
+RSpec.describe "Selenium Integartion test" do
+
+
+  describe "test" do
+    it "should return true" do
+
+      expect(true).to eq(true)
+    end
   end
 
-  after(:each) do
-    @driver.quit
-  end
+  describe "test" do
+    it "should return true" do
+      @driver = Selenium::WebDriver.for(
+          :remote,
+          url: 'http://hub:4444/wd/hub',
+          desired_capabilities: :firefox) # you can also use :chrome, :safari, etc.
 
-  it "search text on google" do
-    @driver.get(@base_url + "/")
-    @driver.find_element(:id, "lst-ib").clear
-    @driver.find_element(:id, "lst-ib").send_keys "testing"
+          @driver.get 'http://the-internet.herokuapp.com'
+          expect(@driver.title).to eq('The Internet')
+
+          @driver.quit
+    end
   end
 
 end
