@@ -15,3 +15,7 @@ docker-compose run web rspec spec/integration/users-firefox.rb
 #vnc to firefox machine
 open vnc://hola@localhost:<vnc-port>
 ```
+
+
+## As well vagrant can be in use
+install ``` vagrant plugin install vagrant-triggers ```
