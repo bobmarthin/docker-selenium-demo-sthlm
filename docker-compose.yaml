@@ -1,29 +1,48 @@
 version: '2'
 services:
-  db:
+  db-primary:
     image: postgres
-  web:
+  db-secondary:
+    image: postgres
+  db-candidate:
+    image: postgres
+  diffy:
+    image: camiloribeiro/twitter-diffy
+    ports:
+      - "8888:8888"
+      - "31900:31900"
+      - "8881:8881"
+    depends_on:
+      - primary
+      - secondary
+      - candidate
+    command: java -jar ./target/scala-2.11/diffy-server.jar -candidate='candidate:8080' -master.primary='primary:8080' -master.secondary='secondary:8080' -service.protocol='http' -serviceName='Happy Service' -proxy.port=:31900 -admin.port=:8881 -http.port=:8888 -rootUrl='localhost:8888'
+
+  candidate:
     build: .
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
     volumes:
-      - .:/myapp
+      - ../candidate:/myapp
     ports:
-      - "3000:3000"
+      - "9881:3000"
     depends_on:
-      - db
-  hub:
-    image: selenium/hub
+      - db-candidate
+  primary:
+    build: .
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - ../primary:/myapp
     ports:
-      - "4444:4444"
-  firefox:
-    image: selenium/node-firefox
-    # image: selenium/node-firefox-debug
-    # command: bash -c "rm /tmp/.X99-lock || echo 'Lock not found, continuing normal startup' && export no_proxy=*.local && /opt/bin/entry_point.sh"
-    # ports:
-    #   - 5900
-    environment:
-      - HUB_PORT_4444_TCP_ADDR=hub
-  chrome:
-    image: selenium/node-chrome
-    environment:
-      - HUB_PORT_4444_TCP_ADDR=hub
+      - "9882:3000"
+    depends_on:
+      - db-primary
+
+  secondary:
+    build: .
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - ../secondary:/myapp
+    ports:
+      - "9883:3000"
+    depends_on:
+      - db-secondary
