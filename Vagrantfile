@@ -17,7 +17,7 @@ Vagrant.configure("2") do |config|
         d.has_ssh = true
         d.ports = ["3000:3000"]
         d.cmd = ["bundle", "exec", "rails s -p 3000 -b '0.0.0.0'"]
-        d.volumes =["/Users/maximguenis/Development/docker-selenium-demo-sthm:/myapp"]
+        d.volumes =["/Users/maximguenis/Development/docker-selenium-demo-sthlm:/myapp"]
         d.link("db:db")
       end
     end
@@ -27,7 +27,8 @@ Vagrant.configure("2") do |config|
   end
 
   config.trigger.after :up  do
-    run "vagrant docker-exec web -- rake db:migrate"
+    run "echo after up"
+    #run "vagrant docker-exec web -- rake db:migrate"
   end
 
 end
