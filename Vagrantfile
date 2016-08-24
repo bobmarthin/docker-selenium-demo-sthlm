@@ -20,15 +20,13 @@ Vagrant.configure("2") do |config|
         d.volumes =["/Users/maximguenis/Development/docker-selenium-demo-sthlm:/myapp"]
         d.link("db:db")
       end
+	    # config.trigger.before :up do
+    	# 	run "echo before up"
+  	  # end
+      #
+  	  # config.trigger.after :up  do
+    	#    run "echo after up"
+    	# 	#run "vagrant docker-exec web -- rake db:migrate"
+  	  # end
     end
-
-  config.trigger.before :up do
-    run "echo before up"
-  end
-
-  config.trigger.after :up  do
-    run "echo after up"
-    #run "vagrant docker-exec web -- rake db:migrate"
-  end
-
 end
