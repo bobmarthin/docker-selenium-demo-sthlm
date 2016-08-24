@@ -22,7 +22,7 @@ services:
     build: .
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
     volumes:
-      - ../candidate:/myapp
+      - ./candidate:/myapp
     ports:
       - "9881:3000"
     depends_on:
@@ -31,7 +31,7 @@ services:
     build: .
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
     volumes:
-      - ../primary:/myapp
+      - ./primary:/myapp
     ports:
       - "9882:3000"
     depends_on:
@@ -41,7 +41,7 @@ services:
     build: .
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
     volumes:
-      - ../secondary:/myapp
+      - ./secondary:/myapp
     ports:
       - "9883:3000"
     depends_on:
