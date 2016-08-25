@@ -1,0 +1,29 @@
+version: '2'
+services:
+  db:
+    image: postgres
+  web:
+    build: .
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - .:/myapp
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+  hub:
+    image: selenium/hub
+    ports:
+      - "4444:4444"
+  firefox:
+    image: selenium/node-firefox
+    # image: selenium/node-firefox-debug
+    # command: bash -c "rm /tmp/.X99-lock || echo 'Lock not found, continuing normal startup' && export no_proxy=*.local && /opt/bin/entry_point.sh"
+    # ports:
+    #   - 5900
+    environment:
+      - HUB_PORT_4444_TCP_ADDR=hub
+  chrome:
+    image: selenium/node-chrome
+    environment:
+      - HUB_PORT_4444_TCP_ADDR=hub
