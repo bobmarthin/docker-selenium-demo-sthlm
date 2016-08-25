@@ -1,0 +1,10 @@
+https://docs.google.com/presentation/d/12KpYlNVpTOB9r4hsRQ4ZLu3HV3JzwXVOai0eiCRmzlI/edit?usp=sharing
+git clone https://github.com/bobmarthin/docker-selenium-demo-sthlm.git
+cd docker-selenium-demo-sthlm
+docker-compose build 
+docker-compose exec web rake db:migrate
+#docker-compose exec web rails generate rspec:model users
+docker-compose exec web rspec spec/integration/users-firefox.rb
+#debug-firefox:
+docker port dockerseleniumdemosthlm_firefox_1 5900 => 0.0.0.0:32770
+open vnc://localhost:32770 => password is secret
