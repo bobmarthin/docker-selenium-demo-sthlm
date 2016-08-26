@@ -7,7 +7,7 @@ Link to presenation:
 https://drive.google.com/open?id=12KpYlNVpTOB9r4hsRQ4ZLu3HV3JzwXVOai0eiCRmzlI
 
 Results from respondents on DayOfCont-STHLM 24/08/2016
- ![alt tag](https://github.com/bobmarthin/docker-selenium-demo-sthlm/blob/master/survey.png)
+ ![alt tag](https://github.com/bobmarthin/docker-selenium-demo-sthlm/blob/master/survey.png|width=400 height=400)
 
 
 example:
