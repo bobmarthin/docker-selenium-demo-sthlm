@@ -1,4 +1,4 @@
- 
+ ![alt tag](https://github.com/bobmarthin/docker-selenium-demo-sthlm/blob/master/survey.png)
 
 ## This repository demonstrates using docker-compose with rspec integration tests.
 
